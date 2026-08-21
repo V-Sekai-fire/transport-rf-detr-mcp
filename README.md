@@ -6,11 +6,11 @@ side of the GAN-style dataset loop.
 
 ## Tools
 
-| Tool | Model | Purpose |
-|---|---|---|
-| `analyze_pose` | RFDETRKeypointPreview (COCO-17) | arm angles vs horizontal, feet/head in frame, strict T-pose verdict |
-| `segment_image` | RFDETRSegMedium | instance masks (class, box, area; optional mask PNG export) |
-| `detect_objects` | RFDETRMedium | plain detection boxes |
+| Tool             | Model                           | Purpose                                                             |
+| ---------------- | ------------------------------- | ------------------------------------------------------------------- |
+| `analyze_pose`   | RFDETRKeypointPreview (COCO-17) | arm angles vs horizontal, feet/head in frame, strict T-pose verdict |
+| `segment_image`  | RFDETRSegMedium                 | instance masks (class, box, area; optional mask PNG export)         |
+| `detect_objects` | RFDETRMedium                    | plain detection boxes                                               |
 
 ## Validation (2026-07-17)
 
