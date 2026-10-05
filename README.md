@@ -1,35 +1,19 @@
-# rf-detr-mcp
+# transport-rf-detr-mcp
 
-MCP server wrapping [RF-DETR](https://github.com/roboflow/rf-detr) (Roboflow,
-Apache 2.0) for objective QA of generated character art — the "discriminator"
-side of the GAN-style dataset loop.
+An MCP server that runs RF-DETR keypoint, segmentation and detection models to check generated character images.
 
-## Tools
+## What it is for
 
-| Tool             | Model                           | Purpose                                                             |
-| ---------------- | ------------------------------- | ------------------------------------------------------------------- |
-| `analyze_pose`   | RFDETRKeypointPreview (COCO-17) | arm angles vs horizontal, feet/head in frame, strict T-pose verdict |
-| `segment_image`  | RFDETRSegMedium                 | instance masks (class, box, area; optional mask PNG export)         |
-| `detect_objects` | RFDETRMedium                    | plain detection boxes                                               |
+It gives an agent three tools over the Model Context Protocol: a pose check that reports arm angles, whether head and feet are in frame and whether the figure holds a T-pose, instance segmentation, and plain detection. It runs on the CPU so the GPU stays free for the image generator, and it downloads each model's weights on first use.
 
-## Validation (2026-07-17)
+## Run it
 
-Tested on stylized 3D-anime foxgirl renders (z-image-turbo): keypoint
-confidence ≥ 0.75, and strict-T verdicts matched human review 4/4
-(passes measured 4–9° from horizontal; failures 38–51°).
+Install `rfdetr` and `mcp` in a Python environment, then register the server with an MCP client as a stdio command:
 
-## Setup
-
-```
-uv venv --python 3.11
-uv pip install --python .venv rfdetr "mcp[cli]"
+```sh
+python server.py
 ```
 
-Register with Claude Code:
+## Licence
 
-```
-claude mcp add rf-detr -- C:\Users\ernes\Desktop\rf-detr-mcp\.venv\Scripts\python C:\Users\ernes\Desktop\rf-detr-mcp\server.py
-```
-
-Runs on CPU deliberately — the GPU is assumed occupied by the diffusion
-backend. First call per model downloads weights to `~/.roboflow/models/`.
+The licence is not stated.
