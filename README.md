@@ -16,4 +16,4 @@ python server.py
 
 ## Licence
 
-The licence is not stated.
+MIT. See [LICENSE](LICENSE).
